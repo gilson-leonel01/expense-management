@@ -1,0 +1,121 @@
+***********************GUIA DO DESENVOLVIMENTO DO PROJECTO***********************
+Definir os Requisitos
+
+    Cadastro de Usuário: 
+        Permitir que o usuário se cadastre no aplicativo com informações básicas.
+
+    Login de Usuário: 
+        Implementar uma funcionalidade de login para que o usuário acesse suas informações.
+
+    Registro de Despesas: 
+        Permitir que o usuário registre suas despesas diárias.
+
+    Categorias de Despesas: 
+        Permitir que o usuário categorize suas despesas (por exemplo, alimentação, transporte, lazer).
+
+    Visualização de Despesas: 
+        Fornecer uma interface para visualizar as despesas registradas.
+
+    Cálculo de Despesas: 
+        Calcular e exibir o total das despesas para um período específico.
+
+    Relatórios e Gráficos: 
+        Fornecer relatórios e gráficos para ajudar o usuário a visualizar suas despesas ao longo do tempo.
+
+Estrutura de Dados
+
+    Usuário: 
+        Uma estrutura para armazenar informações do usuário (nome, email, senha).
+
+    Despesa: 
+        Uma estrutura para armazenar informações sobre cada despesa (data, valor, categoria, descrição).
+
+Fluxo do Aplicativo
+
+    Cadastro de Usuário:
+
+        Usuário entra com seus dados (nome, email, senha).
+        Os dados são validados e armazenados no banco de dados.
+
+    Login de Usuário:
+
+        Usuário entra com email e senha.
+        Os dados são validados contra o banco de dados.
+        Se válidos, o usuário é autenticado e redirecionado para a tela principal.
+
+    Registro de Despesas:
+
+        Usuário entra com os detalhes da despesa (data, valor, categoria, descrição).
+        Os dados são validados e armazenados no banco de dados.
+
+    Visualização de Despesas:
+
+        O aplicativo consulta o banco de dados e recupera as despesas do usuário.
+        As despesas são exibidas em uma lista, ordenadas por data ou categoria.
+
+    Cálculo de Despesas:
+
+        Usuário seleciona um período (por exemplo, mês atual).
+        O aplicativo consulta o banco de dados e soma os valores das despesas para o período selecionado.
+        O total é exibido para o usuário.
+
+    Relatórios e Gráficos:
+
+        O aplicativo consulta o banco de dados e gera relatórios com base nas despesas registradas.
+        Gráficos (como gráficos de pizza ou barras) são gerados para visualização.
+
+
+Descrição das Classes e Métodos
+
+    Classe Usuario
+        Atributos:
+
+            nome: Nome do usuário.
+            email: Email do usuário.
+            senha: Senha do usuário.
+
+        Métodos:
+
+            cadastrar(): Método para cadastrar um novo usuário.
+            login(): Método para fazer login do usuário. Retorna boolean indicando sucesso ou falha.
+
+    Classe Despesa
+
+        Atributos:
+
+            data: Data da despesa.
+            valor: Valor da despesa.
+            categoria: Categoria da despesa (ex. alimentação, transporte).
+            descricao: Descrição da despesa.
+
+        Métodos:
+
+            registrar(): Método para registrar uma nova despesa.
+
+    Classe SistemaFinanceiro
+
+        Atributos:
+
+            usuarios: Lista de usuários cadastrados.
+            despesas: Lista de despesas registradas.
+
+        Métodos:
+
+            cadastrarUsuario(nome: String, email: String, senha: String): Método para cadastrar um novo usuário.
+            loginUsuario(email: String, senha: String): Método para autenticar um usuário. Retorna o usuário autenticado.
+            registrarDespesa(usuario: Usuario, data: Date, valor: float, categoria: String, descricao: String): Método para registrar uma nova despesa.
+            calcularDespesas(usuario: Usuario, periodo: Period): Método para calcular o total das despesas de um usuário em um determinado período.
+            visualizarDespesas(usuario: Usuario): Método para visualizar as despesas de um usuário. Retorna uma lista de despesas.
+            gerarRelatorio(usuario: Usuario): Método para gerar um relatório de despesas de um usuário. Retorna um objeto Relatorio.
+
+    Classe Relatorio
+
+        Atributos:
+
+            despesas: Lista de despesas que compõem o relatório.
+
+        Métodos:
+
+            gerarGrafico(): Método para gerar gráficos das despesas.
+            exportarPDF(): Método para exportar o relatório em formato PDF.
+
